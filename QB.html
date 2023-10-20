@@ -1,28 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QB Evaluation</title>
 
-<link rel="icon" href="images/football-ball.png" type="image/png">
-<link rel="stylesheet" href="QB.css">
-<script src="QB.js" defer></script>
-<meta>
-</meta>
+  <link rel="stylesheet" href="QB.css">
+  <script src="QB.js" defer></script>
 
-<header> 
-    <div class="logo">
-        <img src="images/football-ball.png" width="70" height ="70">
-    </div>
-</header>
-
+</head>
 <body>
-<main>
-    <div>
+
+  <header>
+    <div class="logo-container"></div>
+      <img src="images/nfl.logo.png" width="100" height="100">
     </div>
-</main>
+    <div class="head-title">
+        <h1>NFL QB Salary Predictor</h1>
+    </div>
+  </header>
+  
+  <main>
+    <style>
+        table{
+            border: solid;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black; /* This sets a 1px solid black border around each cell */
+            padding: 8px; /* This adds some padding inside each cell to space out the content */
+            border-radius: 5px;
+        }
+
+        .name-pic-plr {
+            display:flex;
+            align-items: center;
+        }
+    </style>
+    <table>
+        <tr> <!--HEADER-->
+            <th>Players</th>
+            <th>Signed Age</th>
+            <th>Contract Length</th>
+            <th>Total Contract Value</th>
+            <th>Average Annual Value</th>
+        </tr>
+
+        <tr> <!--ROW 1-->
+            <td class="name-pic-plr">
+                <div class="plr-pic"><img src="images/Chris_Reynolds.png" width="90" height="60"></div>
+                <div class="plr-name">Chris Reynolds</div>
+            </td>
+            <td>Signed Age</td>
+            <td>Contract Length</td>
+            <td>Total Contract Value</td>
+            <td>Average Annual Value</td>
+        </tr>
+
+        <tr> <!--ROW 2-->
+            <td class="name-pic-plr">
+                <div class="plr-pic"><img src="images/Chris_Reynolds.png" width="90" height="60"></div>
+                <div class="plr-name">Chris Reynolds</div>
+            </td>
+            <td>Signed Age</td>
+            <td>Contract Length</td>
+            <td>Total Contract Value</td>
+            <td>Average Annual Value</td>
+        </tr>
+
+        <tr> <!--ROW 3-->
+            <td class="name-pic-plr">
+                <div class="plr-pic"><img src="images/Chris_Reynolds.png" width="90" height="60"></div>
+                <div class="plr-name">Chris Reynolds</div>
+            </td>
+            <td>Signed Age</td>
+            <td>Contract Length</td>
+            <td>Total Contract Value</td>
+            <td>Average Annual Value</td>
+        </tr>
+
+        <tr> <!--ROW 4-->
+            <td class="name-pic-plr">
+                <div class="plr-pic"><img src="images/Chris_Reynolds.png" width="90" height="60"></div>
+                <div class="plr-name">Chris Reynolds</div>
+            </td>
+            <td>Signed Age</td>
+            <td>Contract Length</td>
+            <td>Total Contract Value</td>
+            <td>Average Annual Value</td>
+        </tr>
+
+        
+    </table>
+  </main>
+
+  <footer>
+    <img src="images/football-ball.png" width="50" height="50">
+    <p>Fake Copyright © 2023</p>
+    <p>Website Prototype by Y'Dambi Nieban</p>
+  </footer>
 </body>
-<footer>
-
-</footer>
-
-
-
 </html>
