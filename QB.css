@@ -1,37 +1,40 @@
 :root {
     --main-bg-color-1: #B9975B;
-    --main-bg-color-2: #046A38;
+    --main-bg-color-2: #fe7f9c;
+    --main-bg-color-3: #013369;
+    --main-bg-color-4: #D50A0A;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
+/* ================================================================================================*/
 header {
-    background-color: var(--main-bg-color-1);
-    height: 4rem;
     display: flex;
-    justify-items: left;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    background-color: var(--main-bg-color-3);
+    color: #fff;
+}
+
+.head-title {
+    margin-top: 1rem;
+}
+
+/* ===================================================================================================*/
+
+footer {
+    display: flex;
     align-items: center;
-    position: sticky;
-    top: 0;
-    font-size: 1.5rem;
-    color: aliceblue;
+    background-color: var(--main-bg-color-3);
+    color: #fff;
+    padding-left: 1rem;
 }
 
-.logo {
-    margin-right: 20px
-}
-
-.logo img{
-    width: 50px;
-    height: auto;
-    margin: 10px;
-}
-
-main {
-    background-color: var(--main-bg-color-2);
-    width: 80%;
-    margin: 1rem auto;
+footer p {
+    padding-left: 1em;
 }
