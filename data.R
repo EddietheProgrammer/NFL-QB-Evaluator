@@ -8,8 +8,12 @@ library(dplyr)
 season_data <- nflreadr::load_player_stats(seasons = 2022)
 
 starting_qbs <- season_data %>% 
-  filter(position == 'QB') %>% 
-  group_by(player_id) 
+  filter(position == 'QB', sum(attempts) >= 200) %>% 
+  group_by(player_id) %>% 
+  View()
+
+qb_names <- starting_qbs %>% 
+  pull(player_display_name)
 
 regular_season_summary <- starting_qbs %>% 
   filter(!is.na(attempts), season_type == 'REG') %>%
@@ -32,4 +36,8 @@ regular_season_summary <- starting_qbs %>%
   ) %>%
   filter(total_attempts >= 200) %>% 
   write.csv("Regular_Season_QB_Stats.csv", row.names=FALSE)
+
+contracts <- nflreadr::load_contracts() %>% 
+  filter(position == 'QB', is_active == TRUE, player %in% qb_names)
+View(contracts)
 
