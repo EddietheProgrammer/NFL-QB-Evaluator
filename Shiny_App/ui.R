@@ -1,6 +1,6 @@
 library(shiny)
 shinyUI(fluidPage(
-  titlePanel('Violent Crime Rates vs Urban Population in the US'),
+  titlePanel('NFL QB Stats Vs Salary Per Year'),
   sidebarLayout(
     sidebarPanel(
       selectInput('ycol', 'Select a type of Crime to visualize its relation to percentage of urban population', names(USArrests)[c(1,2,4)],
