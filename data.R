@@ -10,7 +10,7 @@ advanced_stats <- nflreadr::load_pfr_advstats(seasons = 2022)
 
 starting_qbs <- season_data %>% 
   group_by(player_id) %>% 
-  filter(position == 'QB')
+  filter(position == 'QB') 
 
 qb_names <- starting_qbs %>% 
   pull(player_display_name)
@@ -79,7 +79,7 @@ merged_data <- left_join(regular_season_summary, sacks, by = "player_name") %>%
   filter(!is.na(Wins))
 
 contracts <- nflreadr::load_contracts() %>% 
-  filter(position == 'QB', is_active == TRUE, player %in% qb_names) %>% 
+  filter(position == 'QB', player %in% qb_names) %>% 
   reframe(
     name = player,
     team = team,
