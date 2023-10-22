@@ -1,18 +1,18 @@
 library(shiny)
 shinyUI(fluidPage(
-  titlePanel('NFL QB Stats Vs Salary Per Year'),
+  titlePanel('QB_Valuation Metric Vs Their Salary for the 2022 NFL Season'),
   sidebarLayout(
     sidebarPanel(
-      selectInput('ycol', 'Select a type of Crime to visualize its relation to percentage of urban population', names(USArrests)[c(1,2,4)],
+      selectInput('ycol', 'Select Gameweek, Season, Or Post Season Stat', names(USArrests)[c(1,2,4)],
                   selected=names(USArrests)[[1]]),
       h1(""),
       h5("head of dataset"),      
       tableOutput('table')      
     ),
     mainPanel(
-      h5("The chart shows amount of crimes (in arrests per 100,000 residents) vs the percent of the population living in urban areas in each of the 50 US states in 1973."),
-      h5("Source: 'USArrests' dataset from R."),
-      h5("A linear regression model is calculated for each type of crime and shown below."),
+      h5("The chart displays the position of quarterbacks (QBs) in the 2022 NFL season relative to their salaries based on the QB_Valuatin Metric"),
+      h5("Source: 'NFLverse' dataset from R."),
+      h5("A linear regression model is calculated for each type of QB Stat and shown below."),
       plotOutput("plot1"),
       h4("Slope"),
       textOutput("pred1slope"),
