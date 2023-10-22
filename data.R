@@ -135,6 +135,8 @@ merge_post <- post_season_summary %>%
   left_join(highest_week_qb, by = 'player_name') %>% 
   filter(!is.na(max_week))
 
+weight <- 0.7
+
 post_season_valuation <- merge_post %>%
   mutate(
     week_adjustment = ifelse(max_week == 19, 1,
@@ -147,13 +149,14 @@ post_season_valuation <- merge_post %>%
       ) %>%
       transmute(
         player_name,
-        QB_Valuation = ((3.7 * completions) + (pass_yards / 5) + (11.3 * pass_tds) - (14.1 * interceptions) - (1.1 * rushing_attempts) + (0.6 * rushing_yards) + (15.9 * rushing_tds) - (2.2 * total_attempts) - (2 * fumbles) + week_adjustment)
+        QB_Valuation = ((1 - weight) * (3.7 * completions) + (pass_yards / 5) + (11.3 * pass_tds) - (14.1 * interceptions) - (1.1 * rushing_attempts) + (0.6 * rushing_yards) + (15.9 * rushing_tds) - (2.2 * total_attempts) - (2 * fumbles) + week_adjustment)
       ) 
 
 
 total_valuation <- regular_season_valuation %>%
   left_join(post_season_valuation, by = "player_name") %>%
-  mutate(QB_Valuation = coalesce(QB_Valuation.x, 0) + coalesce(QB_Valuation.y, 0)) %>%
+  mutate(QB_Valuation = (weight) * (coalesce(QB_Valuation.x, 0) + coalesce(QB_Valuation.y, 0))) %>%
+  
   select(-QB_Valuation.x, -QB_Valuation.y)
 
 simple_valuation <- total_valuation %>% 
@@ -163,3 +166,8 @@ simple_valuation <- total_valuation %>%
     QB_Valuation = QB_Valuation
   ) %>% 
   write_csv("QBs_with_Elo_Unweighted.csv")
+
+
+scaled_score <- simple_valuation %>%
+  mutate(QB_Valuation = (QB_Valuation / max(QB_Valuation) * QB_Valuation)) %>% 
+  write_csv("QBs_with_Elo_Weighted.csv")
